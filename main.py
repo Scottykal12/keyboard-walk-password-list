@@ -12,6 +12,8 @@ SHqwerRow = ["Q", "W", "E", "R", "T", "Y", "U", "I", "O", "P"]
 SHasdfRow = ["A", "S", "D", "F", "G", "H", "J", "K", "L"]
 SHzxcvRow = ["Z", "X", "C", "V", "B", "N", "M", "<"]
 
+# I need to make an array of the arrarys
+
 
 # need to save system output
 ogStdout = sys.stdout
@@ -20,15 +22,25 @@ ogStdout = sys.stdout
 def fourCombo():
     with open('PasswordList.txt', 'w') as file:
         sys.stdout = file
+        
+        start = 0
+        count = 4
+        
+        num = numRow[start:count]
+        qwer = qwerRow[start:count]
+        SHnum = SHnumRow[start:count]
+        SHqwer = SHqwerRow[start:count]
 
-        for i in (numRow[0:4] + qwerRow[0:4] + SHnumRow[0:4] + SHqwerRow[0:4]):
-            print(i)
+        combo = [num + qwer + SHnum + SHqwer]
+        this = ''.join(combo)
+
+        for i in numRow :
+            if start < 7 :
+                print(this) 
+                start += 1
+                count += 1
 
         sys.stdout = ogStdout
-
+        #for i in combo : 
 
 fourCombo()
-
-#test = numRow + qwerRow + SHnumRow +SHqwerRow
-
-# print(asdfRow)
